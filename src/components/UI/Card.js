@@ -25,7 +25,7 @@ function Card(props) {
 
   // implementing receiving classNames
   // every className will be appended to card
-  const classes = 'card ' + props.className  // long list of class names
+  const classes = 'card ' + props.className;  // long list of class names
   return (
       <div className = {classes}> {props.children} </div>
   )
