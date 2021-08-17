@@ -5,9 +5,19 @@ import ExpensesFilter from "./ExpensesFilter";
 
 function Expenses(props) {
   const items = props.items;
+
+  const ExpenseFilterHander = (value) => {
+    console.log(value);
+  };
+
   return (
-    <Card className = 'expenses'>
-      <ExpensesFilter/>
+    <Card className="expenses">
+      <ExpensesFilter onSetExpenseFilter={ExpenseFilterHander} />
+
+      {
+      props.items.map( expense =>
+        <ExpenseItem /> )
+      }
       <ExpenseItem
         title={items[0].title}
         amount={items[0].amount}
@@ -23,7 +33,7 @@ function Expenses(props) {
         amount={items[2].amount}
         date={items[2].date}
       ></ExpenseItem>
-            <ExpenseItem
+      <ExpenseItem
         title={items[3].title}
         amount={items[3].amount}
         date={items[3].date}
