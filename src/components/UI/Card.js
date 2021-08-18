@@ -21,7 +21,7 @@ import "./Card.css";
 /// e.g. everything between <Card> and </Card>
 
 
-function Card(props) {
+const Card = (props) => {
 
   // implementing receiving classNames
   // every className will be appended to card

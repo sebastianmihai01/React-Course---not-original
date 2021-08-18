@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "./components/UI/Card";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
+import Chart from "./components/Chart/Chart"
 
 const DUMMY_EXPENSES = [
   {
@@ -31,7 +32,6 @@ const App = () => {
   // initial date
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
-
   // triggered when an expense is added
   const addExpenseHandler = (expense) => {
     // prevExpenses is given autoamicallyF by React
@@ -44,10 +44,8 @@ const App = () => {
   //onAddExpense (function pointer) custom name
   return (
     <div>
-      <h2 align = 'center'>Let's get started!</h2>
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
-      <Card />
     </div>
   );
 };

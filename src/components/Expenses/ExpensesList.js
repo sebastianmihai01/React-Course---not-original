@@ -1,10 +1,10 @@
 import ExpenseItem from "./ExpenseItem";
-import Expenses from "./Expenses";
 import "./ExpensesList.css";
 
 const ExpensesList = (props) => {
-  let variable = <p> No Expenses Found!</p>;
-
+  if (props.items.length === 0) {
+    return <h2 className="expenses-list__fallback">Found no expenses.</h2>;
+  }
   /*
         // for every item in the prop.items
 
@@ -20,20 +20,22 @@ const ExpensesList = (props) => {
         */
 
   // if no items exist
-  if (props.items.length === 0) {
-    return <h2 className="expenses-list__fallback"> Found no expenses! </h2>;
-  }
+  //...
+  // if (props.items.length === 0) {
+  //   return <h2 className="expenses-list__fallback"> Found no expenses! </h2>;
+  // }
 
   // unordered list
   return (
     <ul className="expenses-list">
-      {props.items.map((expense) => {
+      {props.items.map((expense) => (
         <ExpenseItem
+          key={expense.id}
           title={expense.title}
           amount={expense.amount}
           date={expense.date}
-        />;
-      })}
+        />
+      ))}
     </ul>
   );
 };

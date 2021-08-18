@@ -1,28 +1,22 @@
 // This COMPONENT holds our expense item in the application
-import React, { useState } from "react";
-import "./ExpenseItem.css";
-import Card from "../UI/Card";
-import ExpenseDate from "./ExpenseDate";
+import React from 'react';
 
-function ExpenseItem(props) {
-  const [title, setTitle] = useState(props.title);
+import ExpenseDate from './ExpenseDate';
+import Card from '../UI/Card';
+import './ExpenseItem.css';
 
-  const clickHandler = () => {
-    setTitle(Date());
-    console.log(title);
-  };
+const ExpenseItem = (props) => {
   return (
-    <list>
-      <Card className="expense-item">
+    <li>
+      <Card className='expense-item'>
         <ExpenseDate date={props.date} />
-        <div className="expense-item__description">
-          <h2> {title} </h2>
-          <div className="expense-item__price">{props.amount}$</div>
+        <div className='expense-item__description'>
+          <h2>{props.title}</h2>
+          <div className='expense-item__price'>${props.amount}</div>
         </div>
-        <button onClick={clickHandler}> Change Title </button>
       </Card>
-    </list>
+    </li>
   );
-}
+};
 
 export default ExpenseItem;

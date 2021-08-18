@@ -6,6 +6,7 @@ import ExpenseForm from './ExpenseForm';
 
 //props added from app.js
 const NewExpese = (props) => {
+  const [isEditing, setIsEditing] = useState(false)
 
   // param has custom name
   // this param will be (exists) filled inside the child component (ExpenseForm)
@@ -19,13 +20,20 @@ const NewExpese = (props) => {
     }
     
     props.onAddExpense(expenseData)
+
+    setIsEditing(false);
     //console.log(expenseData)
-    alert(expenseData)
   }
 
-  const clickHandler = (event) => {
-    alert("xd")
-  }
+  
+  const startEditingHandler = () => {
+    setIsEditing(true);
+  };
+
+  const stopEditingHandler = () => {
+    setIsEditing(false);
+  };
+
 
 
   // onSaveExpenseData (custom name) = a prop
@@ -35,12 +43,17 @@ const NewExpese = (props) => {
   // saveExpenseDataHander does not have (), therefore it is a POINTER (the ExpenseForm child will POINT using this)
   // onSaveExpenseData will be a props for the child component
   return (
-    <div className = 'new-expense'>
-
-      <ExpenseForm onSaveExpenseData = {saveExpenseDataHandler}/>
-      <button onClick = {clickHandler}>cancel</button>
+    <div className='new-expense'>
+      {!isEditing && (
+        <button onClick={startEditingHandler}>Add New Expense</button>
+      )}
+      {isEditing && (
+        <ExpenseForm
+          onSaveExpenseData={saveExpenseDataHandler}
+          onCancel={stopEditingHandler}
+        />
+      )}
     </div>
-  );
-};
+  );}
 
 export default NewExpese;
