@@ -1,1 +1,1 @@
-# Project from a React course
+# React.js course 
