@@ -1,5 +1,6 @@
-// Form that RENDERS user input
+// this class Renders the Form
 
+import {useState} from 'react'
 import './NewExpense.css'
 import ExpenseForm from './ExpenseForm';
 
@@ -22,6 +23,9 @@ const NewExpese = (props) => {
     alert(expenseData)
   }
 
+  const clickHandler = (event) => {
+    alert("xd")
+  }
 
 
   // onSaveExpenseData (custom name) = a prop
@@ -32,7 +36,9 @@ const NewExpese = (props) => {
   // onSaveExpenseData will be a props for the child component
   return (
     <div className = 'new-expense'>
+
       <ExpenseForm onSaveExpenseData = {saveExpenseDataHandler}/>
+      <button onClick = {clickHandler}>cancel</button>
     </div>
   );
 };
